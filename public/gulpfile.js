@@ -2,6 +2,7 @@
 
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
+var connect = require('gulp-connect');
 var target = "";
 
 /**
@@ -215,7 +216,7 @@ gulp.task('all', function () {
  * The build task for development purposes. This task does not perform the minification and
  * serves static files form 'dist/static' directory.
  */
-gulp.task('default', function () {
+gulp.task('default', ['connect'], function () {
     target = require('minimist')(process.argv.slice(2)).target;
     gulp.start('cleanAndBuild');
 });
@@ -227,4 +228,11 @@ gulp.task('default', function () {
 gulp.task('dist', function () {
     target = require('minimist')(process.argv.slice(2)).target;
     gulp.start('cleanAndBuildDist');
+});
+
+gulp.task('connect', function() {
+    connect.server({
+        root: 'dist',
+        livereload: true
+    });
 });

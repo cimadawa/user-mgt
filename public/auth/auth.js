@@ -149,12 +149,12 @@ angular.module('app.auth', ['ui.router'])
     .controller('OneTouchStatusController', ['$scope', '$state', '$stateParams','oneTouchService', '$rootScope', '$interval', 'flash',
         function ($scope, $state, $stateParams, oneTouchService, $rootScope, $interval, flash) {
             $scope.taskId = '';
-
+            var check = undefined;
             $scope.checkStatus = function (taskId) {
                 oneTouchService.checkStatus(taskId)
                     .success(function (data) {
-                        if (data.success)
-                        {
+                        if (data.success){
+                            $interval.cancel(check)
                             localStorage.loggedIn = true;
                             $rootScope.$broadcast('auth.loggedIn');
                         }
@@ -167,7 +167,7 @@ angular.module('app.auth', ['ui.router'])
                     });
             };
 
-            $interval(function () {
+            check = $interval(function () {
                 $scope.checkStatus($stateParams.taskId);
             },2000);
 

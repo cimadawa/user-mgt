@@ -285,7 +285,7 @@ module.exports = {
                 })
                     .then(function (response) {
                         console.log('Approval request', response.approval_request);
-                        if (response.approval_request) {
+                        if (response.approval_request.status === 'approved') {
                             res.status(HTTPStatus.OK).json({
                                 success: true,
                                 message: 'User successfully verified.'
