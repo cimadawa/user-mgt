@@ -35,3 +35,15 @@ jspm_packages
 
 # Optional REPL history
 .node_repl_history
+
+node_modules/
+bower_components/
+.tmp/
+gen/
+docs/
+
+.idea/modules.xml
+.idea/user-mgt.iml
+.idea/vcs.xml
+.idea/webResources.xml
+.idea/workspace.xml

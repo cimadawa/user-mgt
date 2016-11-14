@@ -1,0 +1,71 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">{{ pageTitle }}</h1>
+        </div>
+    </div>
+    <form novalidate name="registerForm" class="simple-form col-lg-6" ng-submit="register(newUser)">
+        <div class="form-group" show-errors
+             ng-class="{ 'has-error' : customerForm.name.$invalid && !customerForm.name.$pristine }">
+            <label>Name</label><span class="required-asterisk">*</span>
+            <input autocomplete="off" required name="name" class="form-control" type="text"
+                   focus="true"
+                   ng-model="newUser.name"/>
+
+            <p ng-show="registerForm.name.$invalid && !registerForm.name.$pristine"
+               class="help-block">Name is required.</p>
+        </div>
+        <div class="form-group" show-errors
+             ng-class="{ 'has-error' : registerForm.email.$invalid && !registerForm.email.$pristine }">
+            <label>E-mail</label>
+            <input autocomplete="off" name="email" class="form-control" placeholder="yourmail@example.com"
+                   ng-pattern="/^([^\.]|([^\.])\.[^\.])*$/" type="email" ng-model="newUser.email"/>
+
+            <p ng-show="registerForm.email.$invalid && !registerForm.email.$pristine"
+               class="help-block">Email is invalid.</p>
+        </div>
+        <div class="form-group" show-errors
+             ng-class="{ 'has-error' : customerForm.password.$invalid && !customerForm.password.$pristine }">
+            <label>Password</label><span class="required-asterisk">*</span>
+            <input autocomplete="off" required name="password" class="form-control" type="password"
+                   focus="true"
+                   ng-model="newUser.password"/>
+
+            <p ng-show="registerForm.password.$invalid && !registerForm.password.$pristine"
+               class="help-block">Password is required.</p>
+        </div>
+        <div class="form-group" show-errors
+             ng-class="{ 'has-error' : registerForm.countryCode.$invalid && !registerForm.countryCode.$pristine }">
+            <label>Country Code</label><span class="required-asterisk">*</span>
+            <input autocomplete="off" required name="countryCode" class="form-control" type="text"
+                   focus="true"
+                   ng-model="newUser.countryCode"/>
+
+            <p ng-show="registerForm.countryCode.$invalid && !registerForm.countryCode.$pristine"
+               class="help-block">Country code is required.</p>
+        </div>
+        <div class="form-group" show-errors
+             ng-class="{ 'has-error' : registerForm.phone.$invalid && !registerForm.phone.$pristine }">
+            <label>Phone Number</label><span class="required-asterisk">*</span>
+            <table>
+                <tr>
+                    <td><input autocomplete="off" name="phone" class="form-control"
+                               ng-required="true"
+                               ng-model="newUser.phone" type="tel"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td><td><p ng-show="registerForm.phone.$invalid && !registerForm.phone.$pristine"
+                                    class="help-block">Phone number is invalid.</p></td>
+                </tr>
+            </table>
+        </div>
+
+        <button type="button" class="btn btn-danger btn-float-left active" ng-click="cancel()">Cancel</button>
+        <button type="submit" class="btn btn-primary active btn-float-left" ng-click="save()"
+                ng-disabled="registerForm.name.$invalid || registerForm.countryCode.$invalid || registerForm.email.$invalid ||
+                registerForm.phone.$invalid">Save
+        </button>
+        <br/><br/><br/><br/>
+    </form>
+</div>

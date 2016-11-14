@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html class="no-js" ng-app="app">
+<head>
+    <title>User MGT</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+
+    <link rel="stylesheet" href="static/styles/main.css">
+
+
+    <link rel="stylesheet" href="static/styles/vendor.css">
+    <base href="/">
+</head>
+<body>
+
+<ui-view></ui-view>
+<div flash-alert id="long-flash" active-class="in" class="alert flash-message-container fade main-notification" duration="5500">
+    <span class="alert-message alert-custom">{{ flash.message }}</span>
+</div>
+<div flash-alert active-class="in" class="alert flash-message-container fade main-notification" duration="2500">
+    <span class="alert-message alert-custom">{{ flash.message }}</span>
+</div>
+
+<script src="static/scripts/vendorCore.js"></script>
+
+<script src="static/scripts/vendorPlugins.js"></script>
+
+<script src="static/scripts/public-main.js"></script>
+</body>
+</html>

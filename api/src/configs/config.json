@@ -1,0 +1,13 @@
+{
+  "api": {
+    "prefix": "api",
+    "version": "v1"
+  },
+  "log": {
+    "name": "user-mgt-api",
+    "level": "debug"
+  },
+  "urls": {
+    "base": "http://localhost:3000"
+  }
+}
